@@ -22,9 +22,4 @@
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo precommit"
-    }
-  }
 }
