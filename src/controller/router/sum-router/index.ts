@@ -1,8 +1,8 @@
 import express from 'express';
 
 import sumService from '@/service/sum-service';
-import { sumValidator } from './sum-validator';
-import { sumSanitizer } from './sum-sanitizer';
+import { sumValidator } from './validator';
+import { sumSanitizer } from './sanitizer';
 
 const router = express.Router();
 
