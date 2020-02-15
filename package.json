@@ -7,7 +7,8 @@
     "prod": "nodemon -r dotenv/config src/app.ts dotenv_config_path=./environment/prod.env",
     "stage": "nodemon -r dotenv/config src/app.ts dotenv_config_path=./environment/stage.env",
     "dev": "nodemon -r dotenv/config src/app.ts dotenv_config_path=./environment/dev.env",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "format": "npx prettier --config .prettierrc --write ./src/**/*.ts ./src/*.ts"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
   }
 }
