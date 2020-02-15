@@ -5,12 +5,15 @@ import bodyParser from 'body-parser';
 import logger from '@/util/logger';
 import controller from '@/controller';
 import errorHandler from '@/middlewares/error-handler';
+import requestLogger from '@/middlewares/request-logger';
 
 const app = express();
 
 logger.log('Running in', process.env.NODE_ENV);
 
 app.use(bodyParser.json());
+
+app.use(requestLogger);
 
 app.use(controller);
 

@@ -1,5 +1,6 @@
 import logger from '@/util/logger';
 
-export const requestLogMiddleware = (req: any, res: any, next: any) => {
-  logger.log('Got a request');
+export default (req: any, res: any, next: any) => {
+  logger.log('Received request with: ', req.body, req.query, req.params);
+  return next();
 };
