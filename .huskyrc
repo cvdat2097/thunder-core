@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "echo husky"
+    "pre-commit": "npm run format"
   }
 }
