@@ -5,15 +5,17 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Dev",
-      "skipFiles": [
-        "<node_internals>/**"
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register",
       ],
       "program": "${workspaceFolder}/src/app.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "envFile": "${workspaceFolder}/environment/dev.env",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ]
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]
 }
