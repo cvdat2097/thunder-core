@@ -9,7 +9,7 @@ import requestLogger from '@/middlewares/request-logger';
 
 const app = express();
 
-logger.log('Running in', process.env.NODE_ENV);
+logger.log('Running in', process.env.NODE_ENV as string);
 
 app.use(bodyParser.json());
 
@@ -20,5 +20,7 @@ app.use(controller);
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
-  logger.log(`[PORT:${process.env.PORT}] Server started successfully!`);
+  logger.log(
+    `[PORT:${process.env.PORT as string}] Server started successfully!`,
+  );
 });
