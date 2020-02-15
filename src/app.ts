@@ -1,8 +1,8 @@
 import express from 'express';
-
+import logger from './logger';
 const app = express();
 
-console.log('Running in', process.env.NODE_ENV);
+logger.log('Running in', process.env.NODE_ENV);
 
 app.use('/', (req, res) => {
   res.send('Hi, Im thunder-core!');
@@ -13,4 +13,6 @@ app.use('/', (req, res) => {
   }
 });
 
-app.listen(3000);
+app.listen(process.env.PORT, () => {
+  logger.log(`[PORT:${process.env.PORT}] Server started successfully!`);
+});
