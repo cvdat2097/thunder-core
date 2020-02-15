@@ -16,5 +16,6 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     'arrow-parens': 0,
+    'object-curly-spacing': 0,
   },
 };
