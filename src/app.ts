@@ -15,7 +15,7 @@ logger.log('Running in', process.env.NODE_ENV);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-auth(app);
+auth.jwtAuth(app);
 
 app.use(requestLogger);
 
