@@ -5,8 +5,8 @@ import bodyParser from 'body-parser';
 import auth from '@/auth';
 import logger from '@/util/logger';
 import controller from '@/controller';
-import errorHandler from '@/middlewares/error-handler';
-import requestLogger from '@/middlewares/request-logger';
+import errorHandler from '@/middleware/error-handler';
+import requestLogger from '@/middleware/request-logger';
 
 const app = express();
 
