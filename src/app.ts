@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 auth.jwtAuth(app);
+app.use(auth.authorization);
 
 app.use(requestLogger);
 
