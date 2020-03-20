@@ -1,7 +1,12 @@
 import sequelize from 'sequelize';
 import connection from '../connection';
+import * as securityUtil from '@/util/security';
 
-export class User extends sequelize.Model {}
+export class User extends sequelize.Model {
+  id: any;
+  username: any;
+  password: any;
+}
 
 User.init(
   {
@@ -25,3 +30,8 @@ User.init(
     modelName: 'user',
   },
 );
+
+User.beforeCreate(async user => {
+  const hashedPassword = securityUtil.getHashedPassword(user.password);
+  user.password = hashedPassword;
+});

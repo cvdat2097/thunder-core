@@ -1,11 +1,11 @@
 export interface IScreen {
-  roles: Array<string>;
+  roles: Array<any>;
   path: string;
 }
 
 export default [
   {
-    roles: ['admin'],
+    roles: [{ name: 'Admin' }],
     path: '/sum',
   },
 ] as Array<IScreen>;

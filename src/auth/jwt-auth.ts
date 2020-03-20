@@ -4,9 +4,10 @@ import jwt from 'jsonwebtoken';
 // eslint-disable-next-line no-unused-vars
 import core from 'express-serve-static-core';
 
-import users from '@/mock/users';
+import userRepo from '@/db/repository/user-repository';
 import { JWTStrategyName } from './auth-type.enum';
 import { jwtAuthValidator } from './validator';
+import * as securityUtil from '@/util/security';
 
 const JWT_PRIVATE_KEY = process.env.JWT_PRIVATE_KEY as string;
 
@@ -26,14 +27,24 @@ const authenticate = (token: string) => {
   }
 };
 
+const convertUserToTokenPayload = (user: any) => ({
+  id: user.id,
+  username: user.username,
+  roles: user.roles.map((r: any) => ({
+    name: r.name,
+  })),
+});
+
 const init = () => {
   passport.use(
     JWTStrategyName.LOGIN,
-    new passportCustom.Strategy((req, done) => {
+    new passportCustom.Strategy(async (req, done) => {
       const { username, password } = req.body;
-      const user = users.find(u => u.username === username);
-      if (user?.password === password) {
-        const token = sign(user);
+      const user = await userRepo.getUserByUsername(username);
+      const hashedPassword = securityUtil.getHashedPassword(password);
+      if (user?.password === hashedPassword) {
+        const userPayload = convertUserToTokenPayload(user);
+        const token = sign(userPayload);
         return done(null, token);
       }
       return done(new Error('User not found'));

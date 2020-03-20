@@ -1,11 +1,11 @@
 import sequelize from 'sequelize';
 import connection from '../connection';
 
-export class Role extends sequelize.Model {
+export class Screen extends sequelize.Model {
   id: any;
 }
 
-Role.init(
+Screen.init(
   {
     id: {
       type: sequelize.INTEGER,
@@ -13,13 +13,17 @@ Role.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    path: {
       type: sequelize.STRING,
       allowNull: false,
+    },
+    description: {
+      type: sequelize.STRING,
+      allowNull: true,
     },
   },
   {
     sequelize: connection,
-    modelName: 'role',
+    modelName: 'screen',
   },
 );
