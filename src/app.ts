@@ -8,6 +8,8 @@ import controller from '@/controller';
 import errorHandler from '@/middleware/error-handler';
 import requestLogger from '@/middleware/request-logger';
 
+import '@/db';
+
 const app = express();
 
 logger.log('Running in', process.env.NODE_ENV);
