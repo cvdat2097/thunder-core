@@ -1,3 +1,5 @@
 environment/
 node_modules/
 dist/
+docs/
+

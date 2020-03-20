@@ -9,7 +9,8 @@
     "dev": "nodemon -r dotenv/config src/app.ts dotenv_config_path=./environment/dev.env",
     "build": "tsc -p .",
     "format": "npx prettier --config .prettierrc --write ./src/**/*.ts ./src/*.ts",
-    "lint": "npx eslint ./**/*.ts && echo 'Passed!'"
+    "lint": "npx eslint ./**/*.ts && echo 'Passed!'",
+    "dependency-graph": "npx depcruise --ts-config tsconfig.json --include-only \"^src\" --output-type dot src | dot -T svg > docs/dependencygraph.svg"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +37,7 @@
     "@types/validator": "^12.0.1",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "dependency-cruiser": "^8.0.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.10.0",
