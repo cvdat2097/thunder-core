@@ -1,29 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-import { Sequelize, Dialect } from 'sequelize';
 import logger from '@/util/logger';
 
-const connect = () => {
-  const sequelize = new Sequelize(
-    process.env.DB_NAME as string,
-    process.env.DB_USERNAME as string,
-    process.env.DB_PASSWORD as string,
-    {
-      host: process.env.DB_HOST,
-      dialect: process.env.DB_DIALECT as Dialect,
-      define: {
-        paranoid: true,
-      },
-    },
-  );
-  return sequelize;
-};
-
-import User from './model/user';
-const initModels = (sequelize: any) => {
-  return {
-    User: User(sequelize),
-  };
-};
+import connection from './connection';
+import { User } from './model/user';
+import { Role } from './model/role';
+import { UserRole } from './model/user-role';
 
 const testConnection = async (sequelize: any) => {
   try {
@@ -35,9 +16,11 @@ const testConnection = async (sequelize: any) => {
 };
 
 logger.log('Connecting to DB...');
-const sequelize = connect();
-const models = initModels(sequelize);
-testConnection(sequelize);
-sequelize.sync({ force: true });
+testConnection(connection);
+connection.sync({ force: true });
 
-export default models;
+export const models = {
+  User,
+  Role,
+  UserRole,
+};

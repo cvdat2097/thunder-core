@@ -1,9 +1,9 @@
 import sequelize from 'sequelize';
 import connection from '../connection';
 
-export class User extends sequelize.Model {}
+export class Role extends sequelize.Model {}
 
-User.init(
+Role.init(
   {
     id: {
       type: sequelize.INTEGER,
@@ -11,17 +11,13 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
-      type: sequelize.STRING,
-      allowNull: false,
-    },
-    password: {
+    name: {
       type: sequelize.STRING,
       allowNull: false,
     },
   },
   {
     sequelize: connection,
-    modelName: 'user',
+    modelName: 'role',
   },
 );
